@@ -1,0 +1,29 @@
+<% include partials/_header %>
+
+<div class="container">
+  <div class="row">
+    <!-- Form used to add new entries of employee in database -->
+    <div class="col-md-4 col-md-offset-4">
+    </div>
+    <div class="col-md-4 col-md-offset-4">
+      <form class="alert alert-success" method="POST" action="/login" >
+        <h3 class="text-center">Login System</h3>
+        <div class="form-group">
+          <label for="Email">Email:</label>
+          <input type="email" name="email" class="form-control" placeholder="Enter Email" autofocus required />
+        </div>
+        <div class="form-group">
+          <label for="Password">Password:</label>
+          <input type="password" name="password" class="form-control" placeholder="Enter Password" autofocus required />		
+        </div>
+
+        <div class="form-group">
+          <button class="btn btn-success" type="submit">Login</button>
+        </div>
+      </form>
+    </div>
+    <div class="col-md-4 col-md-offset-4">
+    </div>
+  </div>
+</div>
+<% include partials/_footer %>

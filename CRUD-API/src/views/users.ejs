@@ -1,0 +1,82 @@
+<% include partials/_header %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-5">
+      <button type="Add" id="btnAdd" class="btn btn-success btn-sm" data-toggle="modal" data-target="#ModalAdd">Add</button>
+    </div>
+    <div class="col-md-7"></div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table table-bordered table-hover table-sm">
+        <thead>
+          <tr>
+            <th width="10%">ID</th>
+            <th width="20%">Name</th>
+            <th width="20%">Age</th>
+            <th width="35%">Comment</th>
+            <th width="10%">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if (data) { %>
+          <% for(var i = 0; i < data.length; i++) { %>
+          <tr>
+            <td>
+              <%= data[i].id %>
+            </td>
+            <td>
+              <%= data[i].name %>
+            </td>
+            <td>
+              <%= data[i].age %>
+            </td>
+            <td>
+              <%= data[i].comment %>
+            </td>
+            <td>
+              <a href="/update/<%= data[i].id %>" class="btn btn-primary btn-sm">Edit</a>
+              <a href="/delete/<%= data[i].id %>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you wan to delete ?')">Delete</a>
+            </td>
+          </tr>
+          <% } %>
+          <% } %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Modal Add -->
+  <div class="modal fade" id="ModalAdd" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title" id="exampleModalLabel">Add Infomation</h2>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="/add" method="POST">
+            <div class="form-group">
+              <input type="text" name="name" placeholder="Enter name" class="form-control" autofocus>
+            </div>
+            <div class="form-group">
+              <input type="text" name="age" placeholder="Enter age" class="form-control" autofocus>
+            </div>
+            <div class="form-group">
+              <textarea type="text" name="comment" placeholder="Enter comment" class="form-control"></textarea>
+            </div>
+            <button type="submit" class="btn btn-success">
+              Add
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% include partials/_footer %>
